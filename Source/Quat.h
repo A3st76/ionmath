@@ -9,24 +9,25 @@
 
 namespace ion
 {
-	class Quaternion
+	class Quat
 	{
 	public:
+
 		float x;
 		float y;
 		float z;
 		float w;
 
-		inline Quaternion() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) { }
+		Quat() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) { }
 
-		inline Quaternion(const float& x_, const float& y_, const float& z_, const float& w_) : x(x_), y(y_), z(z_), w(w_) { }
+		Quat(const float x_, const float y_, const float z_, const float w_) : x(x_), y(y_), z(z_), w(w_) { }
 
 		inline float getLength() const
 		{
 			return std::sqrtf(x * x + y * y + z * z + w * w);
 		}
 
-		inline Quaternion normalize() const
+		inline Quat normalize() const
 		{
 			float invLength = 1 / getLength();
 			return *this * invLength;
@@ -52,28 +53,28 @@ namespace ion
 
 		inline const std::string toString() const
 		{
-			return format("Quaternion (%f; %f; %f; %f)", x, y, z, w);
+			return format("Quat (%f; %f; %f; %f)", x, y, z, w);
 		}
 
-		inline static Quaternion angleAxis(const float& angle, const Vector3& axis)
+		inline static Quat angleAxis(const float angle, const Vector3& axis)
 		{
 			Vector3 normAxis = axis.normalize();
 			float rot = std::sinf(angle / 2);
-			return Quaternion(normAxis.x * rot, normAxis.y * rot, normAxis.z * rot, std::cosf(angle / 2));
+			return Quat(normAxis.x * rot, normAxis.y * rot, normAxis.z * rot, std::cosf(angle / 2));
 		}
 
-		inline Quaternion operator*(const float& a) const
+		inline Quat operator*(const float rhs) const
 		{
-			return Quaternion(x * a, y * a, z * a, w * a);
+			return Quat(x * rhs, y * rhs, z * rhs, w * rhs);
 		}
 
-		inline Quaternion operator*(const Quaternion& a) const
+		inline Quat operator*(const Quat& rhs) const
 		{
-			Quaternion quat;
-			quat.x = w * a.x + x * a.w + y * a.z - z * a.y;
-			quat.y = w * a.y - x * a.z + y * a.w + z * a.x;
-			quat.z = w * a.z + x * a.y - y * a.x + z * a.w;
-			quat.w = w * a.w - x * a.x - y * a.y - z * a.z;
+			Quat quat;
+			quat.x = w * rhs.x + x * rhs.w + y * rhs.z - z * rhs.y;
+			quat.y = w * rhs.y - x * rhs.z + y * rhs.w + z * rhs.x;
+			quat.z = w * rhs.z + x * rhs.y - y * rhs.x + z * rhs.w;
+			quat.w = w * rhs.w - x * rhs.x - y * rhs.y - z * rhs.z;
 			return quat;
 		}
 	};

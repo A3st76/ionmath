@@ -11,12 +11,13 @@ namespace ion
 	class Vector2
 	{
 	public:
+
 		float x;
 		float y;
 
-		inline Vector2() : x(0.0f), y(0.0f) { }
+		Vector2() : x(0.0f), y(0.0f) { }
 
-		inline Vector2(const float& x_, const float& y_) : x(x_), y(y_) { }
+		Vector2(const float x_, const float y_) : x(x_), y(y_) { }
 
 		inline float getLength() const
 		{
@@ -34,47 +35,48 @@ namespace ion
 			return format("Vector2 (%f; %f)", x, y);
 		}
 
-		inline Vector2 operator*(const float& a) const
+		inline Vector2 operator*(const float rhs) const
 		{
-			return Vector2(x * a, y * a);
+			return Vector2(x * rhs, y * rhs);
 		}
 
-		inline Vector2 operator-(const Vector2& a) const
+		inline Vector2 operator-(const Vector2& rhs) const
 		{
-			return Vector2(x - a.x, y - a.y);
+			return Vector2(x - rhs.x, y - rhs.y);
 		}
 
-		inline Vector2 operator-(const float& a) const
+		inline Vector2 operator-(const float rhs) const
 		{
-			return Vector2(x - a, y - a);
+			return Vector2(x - rhs, y - rhs);
 		}
 
-		inline Vector2 operator+(const Vector2& a) const
+		inline Vector2 operator+(const Vector2& rhs) const
 		{
-			return Vector2(x + a.x, y + a.y);
+			return Vector2(x + rhs.x, y + rhs.y);
 		}
 
-		inline Vector2 operator+(const float& a) const
+		inline Vector2 operator+(const float rhs) const
 		{
-			return Vector2(x + a, y + a);
+			return Vector2(x + rhs, y + rhs);
 		}
 
-		inline Vector2 operator/(const float& a) const
+		inline Vector2 operator/(const float rhs) const
 		{
-			return Vector2(x / a, y / a);
+			return Vector2(x / rhs, y / rhs);
 		}
 	};
 
 	class Vector3
 	{
 	public:
+
 		float x;
 		float y;
 		float z;
 
-		inline Vector3() : x(0.0f), y(0.0f), z(0.0f) { }
+		Vector3() : x(0.0f), y(0.0f), z(0.0f) { }
 
-		inline Vector3(const float& x_, const float& y_, const float& z_) : x(x_), y(y_), z(z_) { }
+		Vector3(const float x_, const float y_, const float z_) : x(x_), y(y_), z(z_) { }
 
 		inline float getLength() const
 		{
@@ -87,14 +89,14 @@ namespace ion
 			return *this * invLength;
 		}
 
-		inline float dot(const Vector3& a) const
+		inline float dot(const Vector3& rhs) const
 		{
-			return x * a.x + y * a.y + z * a.z;
+			return x * rhs.x + y * rhs.y + z * rhs.z;
 		}
 
-		inline Vector3 cross(const Vector3& a) const
+		inline Vector3 cross(const Vector3& rhs) const
 		{
-			return Vector3(y * a.z - z * a.y, z * a.x - x * a.z, x * a.y - y * a.x);
+			return Vector3(y * rhs.z - z * rhs.y, z * rhs.x - x * rhs.z, x * rhs.y - y * rhs.x);
 		}
 
 		inline const std::string toString() const
@@ -102,48 +104,49 @@ namespace ion
 			return format("Vector2 (%f; %f; %f)", x, y, z);
 		}
 
-		inline Vector3 operator*(const float& a) const
+		inline Vector3 operator*(const float rhs) const
 		{
-			return Vector3(x * a, y * a, z * a);
+			return Vector3(x * rhs, y * rhs, z * rhs);
 		}
 
-		inline Vector3 operator-(const Vector3& a) const
+		inline Vector3 operator-(const Vector3& rhs) const
 		{
-			return Vector3(x - a.x, y - a.y, z - a.z);
+			return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
 		}
 
-		inline Vector3 operator-(const float& a) const
+		inline Vector3 operator-(const float rhs) const
 		{
-			return Vector3(x - a, y - a, z - a);
+			return Vector3(x - rhs, y - rhs, z - rhs);
 		}
 
-		inline Vector3 operator+(const Vector3& a) const
+		inline Vector3 operator+(const Vector3& rhs) const
 		{
-			return Vector3(x + a.x, y + a.y, z + a.z);
+			return Vector3(x + rhs.x, y + rhs.y, z + rhs.z);
 		}
 
-		inline Vector3 operator+(const float& a) const
+		inline Vector3 operator+(const float rhs) const
 		{
-			return Vector3(x + a, y + a, z + a);
+			return Vector3(x + rhs, y + rhs, z + rhs);
 		}
 
-		inline Vector3 operator/(const float& a) const
+		inline Vector3 operator/(const float rhs) const
 		{
-			return Vector3(x / a, y / a, z / a);
+			return Vector3(x / rhs, y / rhs, z / rhs);
 		}
 	};
 
 	class Vector4
 	{
 	public:
+
 		float x;
 		float y;
 		float z;
 		float w;
 
-		inline Vector4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) { }
+		Vector4() : x(0.0f), y(0.0f), z(0.0f), w(0.0f) { }
 
-		inline Vector4(const float& x_, const float& y_, const float& z_, const float& w_) : x(x_), y(y_), z(z_), w(w_) { }
+		Vector4(const float x_, const float y_, const float z_, const float w_) : x(x_), y(y_), z(z_), w(w_) { }
 
 		inline float getLength() const
 		{
@@ -155,34 +158,34 @@ namespace ion
 			return format("Vector2 (%f; %f; %f; %f)", x, y, z, w);
 		}
 
-		inline Vector4 operator*(const float& a) const
+		inline Vector4 operator*(const float rhs) const
 		{
-			return Vector4(x * a, y * a, z * a, w * a);
+			return Vector4(x * rhs, y * rhs, z * rhs, w * rhs);
 		}
 
-		inline Vector4 operator-(const Vector4& a) const
+		inline Vector4 operator-(const Vector4& rhs) const
 		{
-			return Vector4(x - a.x, y - a.y, z - a.z, w - a.w);
+			return Vector4(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w);
 		}
 
-		inline Vector4 operator-(const float& a) const
+		inline Vector4 operator-(const float rhs) const
 		{
-			return Vector4(x - a, y - a, z - a, w - a);
+			return Vector4(x - rhs, y - rhs, z - rhs, w - rhs);
 		}
 
-		inline Vector4 operator+(const Vector4& a) const
+		inline Vector4 operator+(const Vector4& rhs) const
 		{
-			return Vector4(x + a.x, y + a.y, z + a.z, w + a.w);
+			return Vector4(x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w);
 		}
 
-		inline Vector4 operator+(const float& a) const
+		inline Vector4 operator+(const float rhs) const
 		{
-			return Vector4(x + a, y + a, z + a, w + a);
+			return Vector4(x + rhs, y + rhs, z + rhs, w + rhs);
 		}
 
-		inline Vector4 operator/(const float& a) const
+		inline Vector4 operator/(const float rhs) const
 		{
-			return Vector4(x / a, y / a, z / a, w / a);
+			return Vector4(x / rhs, y / rhs, z / rhs, w / rhs);
 		}
 	};
 }
